@@ -1,9 +1,10 @@
 # Segmentation-of-rice-field-images-captured-by-UAV-graduationthesis-
-    Data_set: 5280 × 3956 pixels, sl: 114
+    Data_set: 5280 × 3956 pixels, sl: 201
     -----------
-    Data_train: Data_set_resize, size: 660 × 494 pixels(1:8), sl: 114
-    Data_test: ...
-    using: anylabeling - python3.9
+    Data_train: Data_set_resize, size: 1280 × 960, sl: 201
+    Data_test: 21
+    Gán nhãn dữ liệu: anylabeling - python3.9
+    Huấn luyện trên github.
     Thư viện:
         TensorFlow/Keras: U-Net, DeepLab.
         PyTorch: Mask R-CNN, PSPNet.
@@ -24,9 +25,13 @@
         Mask R-CNN: Phù hợp cho bài toán phân đoạn đối tượng và instance segmentation.
         DeepLab: Phù hợp cho bài toán semantic segmentation với độ chính xác cao.
         YOLO
-        Phân đoạn ảnh: U-Net, DeepLab
-        Phát hiện đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO)
+        Phân đoạn ảnh ngữ nghĩa: U-Net, DeepLab
+        Phân đoạn ảnh đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO)
     4. Xây dựng mô hình
+    - Yolo: YOLO1280.ipynb
+    - Mark-RCNN + resnet(50 - 101): maskrcnn_resnet50_101.ipynb
+    - Deeplabv3 + resnet(50 - 101): Deeplab_resnet50_101.ipynb
+    - UnetSegformet: Unet_segformer.ipynb
     5. Huấn luyện mô hình
         b1. Đọc và xử lý dữ liệu từ file JSON.
         b2. Chuẩn bị dữ liệu (ảnh và mask).
