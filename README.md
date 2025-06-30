@@ -12,14 +12,14 @@
     -----------
     1. Chuẩn bị dữ liệu
         Dữ liệu hình ảnh: Thu thập hình ảnh cần phân đoạn.
-        Nhãn phân đoạn: Mỗi hình ảnh cần có nhãn tương ứng dưới dạng mask (ảnh nhị phân hoặc ảnh nhiều lớp, trong đó mỗi pixel được gán nhãn thuộc về một lớp cụ thể).
         Chia dữ liệu: Chia dữ liệu thành tập huấn luyện (train), tập kiểm tra (test), và tập validation.
 
     2. Tiền xử lý dữ liệu
+        Phân đoạn theo đối tượng: gán dữ liệu và chia thành 3 tập train val test
+        Phân đoạn theo ngữ nghĩa
         Resize hình ảnh: Đưa tất cả hình ảnh và mask về cùng kích thước.
         Chuẩn hóa: Chuẩn hóa giá trị pixel về khoảng [0, 1] hoặc [-1, 1].
         Data Augmentation: Áp dụng các kỹ thuật như xoay, lật, crop, thay đổi độ sáng để tăng cường dữ liệu.
-        
     3. Chọn mô hình
         U-Net: Phù hợp cho bài toán phân đoạn y tế (ví dụ: phân đoạn khối u trong ảnh y tế).
         Mask R-CNN: Phù hợp cho bài toán phân đoạn đối tượng và instance segmentation.
@@ -33,9 +33,14 @@
     - Deeplabv3 + resnet(50 - 101): Deeplab_resnet50_101.ipynb
     - UnetSegformet: Unet_segformer.ipynb
     5. Huấn luyện mô hình
+    Phân đoạn theo đối tượng:
+        b1. Gán nhãn và chuẩn bị dữ liệu theo yêu cầu từng mô hình.
+        b2. Chuẩn bị dữ liệu (ảnh và json).
+        b3. Xây dựng và huấn luyện mô hình (Yolov8 segmentation, Mask R-CNN)
+    Phân đoạn ngữ nghĩa:
         b1. Đọc và xử lý dữ liệu từ file JSON.
         b2. Chuẩn bị dữ liệu (ảnh và mask).
-        b3. Xây dựng và huấn luyện mô hình (U-Net, DeepLab, Mask R-CNN, PSPNet)
+        b3. Xây dựng và huấn luyện mô hình (U-Net segmentation tranformer, DeepLabv3 + resnet)
     6. Đánh giá mô hình
         Sử dụng các chỉ số như IoU (Intersection over Union), Dice Coefficient, hoặc Pixel Accuracy để đánh giá hiệu suất mô hình.
     7. Dự đoán và hiển thị kết quả
