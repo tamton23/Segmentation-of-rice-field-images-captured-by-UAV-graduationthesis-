@@ -57,6 +57,6 @@
     Phát hiện đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO), SSD.
     Thời gian thực: YOLO, MobileNet, SSD.
     Tạo ảnh: GAN, StyleGAN, CycleGAN.
-# Kết quả huấn luyện được lọc và lấy ra phiên bản mô hình tốt nhất để test
+# Kết quả huấn luyện được lọc và lấy ra phiên bản mô hình tốt nhất để test(click vào để xem)
 [![Watch the video](https://github.com/user-attachments/assets/3fc453cf-7dcd-4c0d-ba70-5ced35dcf8dd)](https://drive.google.com/file/d/1RX8wX9yU02q82FP6Hzq5p0T0SZayqvk1/view?usp=drive_link)
 
