@@ -1,3 +1,6 @@
+# Phân đoạn hình ảnh
+![output_DJI_20240421090742_0001_D](https://github.com/user-attachments/assets/0157b05c-a856-4e3a-8fff-f623992cddac)
+
 # Segmentation-of-rice-field-images-captured-by-UAV-graduationthesis-
     Data_set: 5280 × 3956 pixels, sl: 201
     -----------
@@ -54,5 +57,6 @@
     Phát hiện đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO), SSD.
     Thời gian thực: YOLO, MobileNet, SSD.
     Tạo ảnh: GAN, StyleGAN, CycleGAN.
-     
+# Kết quả huấn luyện được lọc và lấy ra phiên bản mô hình tốt nhất để test
+[![Watch the video](https://github.com/user-attachments/assets/3fc453cf-7dcd-4c0d-ba70-5ced35dcf8dd)](https://drive.google.com/file/d/1RX8wX9yU02q82FP6Hzq5p0T0SZayqvk1/view?usp=drive_link)
 
