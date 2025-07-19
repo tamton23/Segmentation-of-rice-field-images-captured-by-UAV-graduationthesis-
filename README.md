@@ -1,4 +1,4 @@
-# Phân đoạn hình ảnh
+# Image segmentation
 ![output_DJI_20240421090742_0001_D](https://github.com/user-attachments/assets/0157b05c-a856-4e3a-8fff-f623992cddac)
 
 # Segmentation-of-rice-field-images-captured-by-UAV-graduationthesis-
