@@ -34,15 +34,11 @@ Thư viện:
 5. Model Training
     Instance/Object Segmentation:
         Step 1: Annotate and format the dataset according to the requirements of each model.
-        
         Step 2: Prepare the dataset (images and corresponding .json annotation files).
-        
         Step 3: Build and train the model using architectures such as YOLOv8 Segmentation and Mask R-CNN.
     Semantic Segmentation:
         Step 1: Parse and process label data from JSON annotation files.
-        
         Step 2: Prepare the dataset (images and corresponding segmentation masks).
-        
         Step 3: Build and train the model using architectures like U-Net, Segmentation Transformers, or DeepLabv3 with ResNet backbone.
 6. Model Evaluation
     Evaluate model performance using metrics such as:
