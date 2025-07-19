@@ -6,50 +6,55 @@
     -----------
     Data_train: Data_set_resize, size: 1280 × 960, sl: 201
     Data_test: 21
-    Gán nhãn dữ liệu: anylabeling - python3.9
-    Huấn luyện trên github.
+    labeling image: anylabeling - python3.9
+    training on Colab.
     Thư viện:
-        TensorFlow/Keras: U-Net, DeepLab.
-        PyTorch: Mask R-CNN, PSPNet.
-        OpenCV: xử lý ảnh
     -----------
-    1. Chuẩn bị dữ liệu
-        Dữ liệu hình ảnh: Thu thập hình ảnh cần phân đoạn.
-        Chia dữ liệu: Chia dữ liệu thành tập huấn luyện (train), tập kiểm tra (test), và tập validation.
-
-    2. Tiền xử lý dữ liệu
-        Phân đoạn theo đối tượng: gán dữ liệu và chia thành 3 tập train val test
-        Phân đoạn theo ngữ nghĩa
-        Resize hình ảnh: Đưa tất cả hình ảnh và mask về cùng kích thước.
-        Chuẩn hóa: Chuẩn hóa giá trị pixel về khoảng [0, 1] hoặc [-1, 1].
-        Data Augmentation: Áp dụng các kỹ thuật như xoay, lật, crop, thay đổi độ sáng để tăng cường dữ liệu.
-    3. Chọn mô hình
-        U-Net: Phù hợp cho bài toán phân đoạn y tế (ví dụ: phân đoạn khối u trong ảnh y tế).
-        Mask R-CNN: Phù hợp cho bài toán phân đoạn đối tượng và instance segmentation.
-        DeepLab: Phù hợp cho bài toán semantic segmentation với độ chính xác cao.
-        YOLO
-        Phân đoạn ảnh ngữ nghĩa: U-Net, DeepLab
-        Phân đoạn ảnh đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO)
-    4. Xây dựng mô hình
-    - Yolo: YOLO1280.ipynb
-    - Mark-RCNN + resnet(50 - 101): maskrcnn_resnet50_101.ipynb
-    - Deeplabv3 + resnet(50 - 101): Deeplab_resnet50_101.ipynb
-    - UnetSegformet: Unet_segformer.ipynb
-    5. Huấn luyện mô hình
-    Phân đoạn theo đối tượng:
-        b1. Gán nhãn và chuẩn bị dữ liệu theo yêu cầu từng mô hình.
-        b2. Chuẩn bị dữ liệu (ảnh và json).
-        b3. Xây dựng và huấn luyện mô hình (Yolov8 segmentation, Mask R-CNN)
-    Phân đoạn ngữ nghĩa:
-        b1. Đọc và xử lý dữ liệu từ file JSON.
-        b2. Chuẩn bị dữ liệu (ảnh và mask).
-        b3. Xây dựng và huấn luyện mô hình (U-Net segmentation tranformer, DeepLabv3 + resnet)
-    6. Đánh giá mô hình
-        Sử dụng các chỉ số như IoU (Intersection over Union), Dice Coefficient, hoặc Pixel Accuracy để đánh giá hiệu suất mô hình.
-    7. Dự đoán và hiển thị kết quả
-        Sử dụng mô hình đã huấn luyện để dự đoán trên dữ liệu mới.
-        Hiển thị kết quả phân đoạn bằng cách vẽ mask dự đoán lên hình ảnh gốc.
-    8. Tối ưu hóa và cải thiện
+    1. Data Preparation
+        Image data: Collect images that require segmentation.
+        Dataset splitting: Divide the dataset into training, validation, and testing sets.
+    2. Data Preprocessing
+        Object-level segmentation: Annotate images and split into train, validation, and test sets accordingly.
+        Semantic segmentation: Ensure consistent labeling across classes.
+        Image resizing: Resize all images and corresponding masks to a uniform shape.
+        Normalization: Normalize pixel values to the range [0, 1] or [-1, 1].
+        Data augmentation: Apply techniques such as rotation, flipping, cropping, and brightness adjustment to enhance the dataset and reduce overfitting.
+    3. Model Selection
+        U-Net: Well-suited for medical image segmentation tasks (e.g., tumor segmentation).
+        Mask R-CNN: Ideal for instance segmentation and object-level segmentation.
+        DeepLab: Suitable for semantic segmentation tasks requiring high accuracy.
+        YOLO: While primarily for object detection, it can be adapted for segmentation tasks via labeling conversion tools.
+        Semantic segmentation models: U-Net, DeepLab.
+        Instance/object segmentation models: YOLO (via labelme2yolo), Faster R-CNN (via labelme2coco).
+    4. Model Development
+        - Yolo: YOLO1280.ipynb
+        - Mark-RCNN + resnet(50 - 101): maskrcnn_resnet50_101.ipynb
+        - Deeplabv3 + resnet(50 - 101): Deeplab_resnet50_101.ipynb
+        - UnetSegformet: Unet_segformer.ipynb
+    5. Model Training
+        Instance/Object Segmentation:
+            Step 1: Annotate and format the dataset according to the requirements of each model.
+            
+            Step 2: Prepare the dataset (images and corresponding .json annotation files).
+            
+            Step 3: Build and train the model using architectures such as YOLOv8 Segmentation and Mask R-CNN.
+        Semantic Segmentation:
+            Step 1: Parse and process label data from JSON annotation files.
+            
+            Step 2: Prepare the dataset (images and corresponding segmentation masks).
+            
+            Step 3: Build and train the model using architectures like U-Net, Segmentation Transformers, or DeepLabv3 with ResNet backbone.
+    6. Model Evaluation
+        Evaluate model performance using metrics such as:
+            IoU (Intersection over Union)
+            Dice Coefficient
+            Pixel Accuracy
+    7. Prediction and Visualization
+        Use the trained model to make predictions on new or unseen data.
+        Visualize the results by overlaying the predicted masks on the original input images for qualitative assessment.
+    8. Optimization and Improvement
+        Fine-tune hyperparameters (e.g., learning rate, batch size).
+        Explore advanced architectures or pre-trained backbones.
     
     --------------
     Phân loại ảnh: ResNet, EfficientNet, MobileNet.
@@ -57,6 +62,6 @@
     Phát hiện đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO), SSD.
     Thời gian thực: YOLO, MobileNet, SSD.
     Tạo ảnh: GAN, StyleGAN, CycleGAN.
-# Kết quả huấn luyện được lọc và lấy ra phiên bản mô hình tốt nhất để test(click vào để xem)
+# 🔍 The training results were filtered, and the best-performing model version was selected for testing (click to view)
 [![Watch the video](https://github.com/user-attachments/assets/3fc453cf-7dcd-4c0d-ba70-5ced35dcf8dd)](https://drive.google.com/file/d/1RX8wX9yU02q82FP6Hzq5p0T0SZayqvk1/view?usp=drive_link)
 
