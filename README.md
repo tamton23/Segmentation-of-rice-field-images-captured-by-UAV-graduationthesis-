@@ -3,13 +3,21 @@
 
 # Segmentation-of-rice-field-images-captured-by-UAV-graduationthesis-
 Data_set: 5280 × 3956 pixels, sl: 201
+
 -----------
+
 Data_train: Data_set_resize, size: 1280 × 960, sl: 201
+
 Data_test: 21
+
 labeling image: anylabeling - python3.9
+
 training on Colab.
+
 Thư viện:
+
 -----------
+
 1. Data Preparation
     Image data: Collect images that require segmentation.
     Dataset splitting: Divide the dataset into training, validation, and testing sets.
@@ -53,11 +61,17 @@ Thư viện:
     Explore advanced architectures or pre-trained backbones.
 
 --------------
+
 Phân loại ảnh: ResNet, EfficientNet, MobileNet.
+
 Phân đoạn ảnh: U-Net, DeepLab, Mask R-CNN, PSPNet.
+
 Phát hiện đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO), SSD.
+
 Thời gian thực: YOLO, MobileNet, SSD.
+
 Tạo ảnh: GAN, StyleGAN, CycleGAN.
+
 # 🔍 The training results were filtered, and the best-performing model version was selected for testing (click to view)
 [![Watch the video](https://github.com/user-attachments/assets/3fc453cf-7dcd-4c0d-ba70-5ced35dcf8dd)](https://drive.google.com/file/d/1RX8wX9yU02q82FP6Hzq5p0T0SZayqvk1/view?usp=drive_link)
 
