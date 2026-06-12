@@ -1,77 +1,90 @@
-# Image segmentation
-![output_DJI_20240421090742_0001_D](https://github.com/user-attachments/assets/0157b05c-a856-4e3a-8fff-f623992cddac)
+# 🌾 Segmentation of Rice Field Images Captured by UAV
 
-# Segmentation-of-rice-field-images-captured-by-UAV-graduationthesis-
-Data_set: 5280 × 3956 pixels, sl: 201
+![UAV Image Segmentation](https://github.com/user-attachments/assets/0157b05c-a856-4e3a-8fff-f623992cddac)
 
------------
+This project (developed for a Graduation Thesis) focuses on the automated segmentation of rice fields using high-resolution Unmanned Aerial Vehicle (UAV) imagery. It evaluates and compares various deep learning architectures for both Semantic and Instance Segmentation.
 
-Data_train: Data_set_resize, size: 1280 × 960, sl: 201
+---
 
-Data_test: 21
+## 📊 Dataset Overview
 
-labeling image: anylabeling - python3.9
+* **Original Dataset:** 201 images at a resolution of `5280 × 3956` pixels.
+* **Training Data (Resized):** 201 images scaled down to `1280 × 960` pixels to optimize computational load.
+* **Testing Data:** 21 independent images.
+* **Annotation Tool:** [AnyLabeling](https://github.com/vietanhdev/anylabeling) (Python 3.9 environment).
+* **Training Environment:** Google Colab.
 
-training on Colab.
+---
 
-Thư viện:
+## 🛠️ Complete Machine Learning Pipeline
 
------------
+### 1. Data Preparation
+* Collect raw high-resolution UAV imagery.
+* Strategically split the dataset into Training, Validation, and Testing subsets.
 
-1. Data Preparation
-    Image data: Collect images that require segmentation.
-    Dataset splitting: Divide the dataset into training, validation, and testing sets.
-2. Data Preprocessing
-    Object-level segmentation: Annotate images and split into train, validation, and test sets accordingly.
-    Semantic segmentation: Ensure consistent labeling across classes.
-    Image resizing: Resize all images and corresponding masks to a uniform shape.
-    Normalization: Normalize pixel values to the range [0, 1] or [-1, 1].
-    Data augmentation: Apply techniques such as rotation, flipping, cropping, and brightness adjustment to enhance the dataset and reduce overfitting.
-3. Model Selection
-    U-Net: Well-suited for medical image segmentation tasks (e.g., tumor segmentation).
-    Mask R-CNN: Ideal for instance segmentation and object-level segmentation.
-    DeepLab: Suitable for semantic segmentation tasks requiring high accuracy.
-    YOLO: While primarily for object detection, it can be adapted for segmentation tasks via labeling conversion tools.
-    Semantic segmentation models: U-Net, DeepLab.
-    Instance/object segmentation models: YOLO (via labelme2yolo), Faster R-CNN (via labelme2coco).
-4. Model Development
-    - Yolo: YOLO1280.ipynb
-    - Mark-RCNN + resnet(50 - 101): maskrcnn_resnet50_101.ipynb
-    - Deeplabv3 + resnet(50 - 101): Deeplab_resnet50_101.ipynb
-    - UnetSegformet: Unet_segformer.ipynb
-5. Model Training
-    Instance/Object Segmentation:
-        Step 1: Annotate and format the dataset according to the requirements of each model.
-        Step 2: Prepare the dataset (images and corresponding .json annotation files).
-        Step 3: Build and train the model using architectures such as YOLOv8 Segmentation and Mask R-CNN.
-    Semantic Segmentation:
-        Step 1: Parse and process label data from JSON annotation files.
-        Step 2: Prepare the dataset (images and corresponding segmentation masks).
-        Step 3: Build and train the model using architectures like U-Net, Segmentation Transformers, or DeepLabv3 with ResNet backbone.
-6. Model Evaluation
-    Evaluate model performance using metrics such as:
-        IoU (Intersection over Union)
-        Dice Coefficient
-        Pixel Accuracy
-7. Prediction and Visualization
-    Use the trained model to make predictions on new or unseen data.
-    Visualize the results by overlaying the predicted masks on the original input images for qualitative assessment.
-8. Optimization and Improvement
-    Fine-tune hyperparameters (e.g., learning rate, batch size).
-    Explore advanced architectures or pre-trained backbones.
+### 2. Data Preprocessing
+* **Object/Instance Level:** Annotate images and split them into respective sets.
+* **Semantic Level:** Ensure consistent class labeling across all masks.
+* **Standardization:** Resize all images and corresponding masks to a uniform shape (`1280 × 960`).
+* **Normalization:** Scale pixel values to `[0, 1]` or `[-1, 1]` intervals.
+* **Data Augmentation:** Apply random rotation, flipping, cropping, and brightness adjustments to enhance dataset variance and mitigate overfitting.
 
---------------
+### 3. Model Architecture Selection
+Different models were chosen based on specific segmentation goals:
+* **U-Net:** Renowned for precise, boundary-level semantic segmentation.
+* **Mask R-CNN:** The gold standard for instance-level segmentation and distinct object isolation.
+* **DeepLab(v3):** Excellent for semantic segmentation requiring high accuracy over complex features.
+* **YOLOv8-Seg:** Adapted from object detection, offering a balance between instance segmentation accuracy and real-time processing speed.
 
-Phân loại ảnh: ResNet, EfficientNet, MobileNet.
+### 4. Implementation Details (Notebooks)
+The development and training of these models are structured in the following Jupyter Notebooks:
+* 🟢 `YOLO1280.ipynb` - YOLOv8 Segmentation.
+* 🔵 `maskrcnn_resnet50_101.ipynb` - Mask R-CNN utilizing ResNet-50 / ResNet-101 backbones.
+* 🟣 `Deeplab_resnet50_101.ipynb` - DeepLabv3 utilizing ResNet-50 / ResNet-101 backbones.
+* 🟠 `Unet_segformer.ipynb` - U-Net paired with SegFormer architecture.
 
-Phân đoạn ảnh: U-Net, DeepLab, Mask R-CNN, PSPNet.
+### 5. Training Workflows
 
-Phát hiện đối tượng: YOLO(labelme2yolo), Faster R-CNN(labelme2COCO), SSD.
+**A. Instance/Object Segmentation (YOLO, Mask R-CNN)**
+1. Annotate and format the dataset matching the architecture's requirements (e.g., `labelme2yolo` or `labelme2coco`).
+2. Aggregate datasets (images + `.json` annotations).
+3. Build and train models like YOLOv8-Seg and Mask R-CNN.
 
-Thời gian thực: YOLO, MobileNet, SSD.
+**B. Semantic Segmentation (U-Net, DeepLab)**
+1. Parse and extract exact mask matrices from JSON annotations.
+2. Prepare the dataset pairs (images + binary/multi-class masks).
+3. Build and train using U-Net, SegFormer, or DeepLabv3 (ResNet backbone).
 
-Tạo ảnh: GAN, StyleGAN, CycleGAN.
+### 6. Model Evaluation
+Model accuracy and robustness were validated using standard computer vision metrics:
+* **IoU (Intersection over Union)**
+* **Dice Coefficient**
+* **Pixel Accuracy**
 
-# 🔍 The training results were filtered, and the best-performing model version was selected for testing (click to view)
+### 7. Prediction & Optimization
+* **Visualization:** Predicted masks are overlaid onto original inputs for immediate qualitative assessment.
+* **Optimization:** Hyperparameter fine-tuning (Learning Rate, Batch Size) and exploration of advanced pre-trained backbones to maximize metric performance.
+
+---
+
+## 📌 Architecture Reference Guide
+
+For future expansion, the project references the following architectural categories:
+
+| Task | Recommended Architectures |
+| :--- | :--- |
+| **Image Classification** | ResNet, EfficientNet, MobileNet |
+| **Semantic Segmentation** | U-Net, DeepLab, PSPNet, SegFormer |
+| **Object Detection / Instance Seg.** | YOLO, Faster R-CNN, Mask R-CNN, SSD |
+| **Real-Time Processing** | YOLO, MobileNet, SSD |
+| **Generative Image Processing**| GAN, StyleGAN, CycleGAN |
+
+---
+
+## 🔍 Video Demo: Best Model Inference
+
+The training results were rigorously filtered, and the best-performing model version was selected for final testing on unseen UAV data. 
+
+**Click the thumbnail below to watch the inference video:**
+
 [![Watch the video](https://github.com/user-attachments/assets/3fc453cf-7dcd-4c0d-ba70-5ced35dcf8dd)](https://drive.google.com/file/d/1RX8wX9yU02q82FP6Hzq5p0T0SZayqvk1/view?usp=drive_link)
-
